@@ -1,20 +1,23 @@
+
 pipeline {
     agent any
 
     stages {
-        stage('Webhook Trigger Demo') {
+        stage('Webhook Test') {
             steps {
-                echo 'Webhook triggered Jenkins!'
-                echo 'GitHub code received successfully.'
-
-                sh 'cat index.html'
+                echo 'GitHub webhook triggered Jenkins!'
+                echo 'Pipeline executed successfully!'
+                sh 'date'
             }
         }
     }
 
     post {
         success {
-            echo 'Build completed successfully!'
+            echo 'Build SUCCESS!'
+        }
+        failure {
+            echo 'Build FAILED!'
         }
     }
 }
